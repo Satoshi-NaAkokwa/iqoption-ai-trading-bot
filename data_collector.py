@@ -11,7 +11,10 @@ import time
 try:
     from iqoptionapi.stable_api import IQ_Option
 except ImportError:
-    IQ_Option = None
+    try:
+        from iqoptionapi import IQ_Option
+    except ImportError:
+        IQ_Option = None
 
 logger = logging.getLogger(__name__)
 
@@ -55,12 +58,13 @@ class DataCollector:
                 logger.info("Connected to IQ Option API")
 
                 # Set demo/practice mode
-                self.api.change_balance(self.demo_mode + 1)  # 1 for demo, 2 for real
+                if self.demo_mode:
+                    self.api.change_balance("PRACTICE")
+                    logger.info("Switched to PRACTICE (demo) mode")
 
                 # Get account info
-                account_type = self.api.get_balance_mode()
                 balance = self.api.get_balance()
-                logger.info(f"Account type: {'Demo' if account_type == 'PRACTICE' else 'Real'}, Balance: {balance}")
+                logger.info(f"Balance: ${balance:.2f}")
 
                 return True
             else:
