@@ -2,16 +2,38 @@
 
 An intelligent trading bot for IQ Option platform with LLM-powered market analysis and strategy learning capabilities.
 
+## 🚀 Bot Versions
+
+| Version | File | Description | Trade Amount | Risk Level |
+|---------|------|-------------|--------------|------------|
+| **v1** | `main.py` | Original LLM-powered bot | $1 | Conservative |
+| **v2** | `bot_24_7.py` | 24/7 OTC trading | $1 | Moderate |
+| **v3** | `bot_adaptive.py` | Adaptive with session awareness | $1 | Moderate |
+| **v4** | `bot_adaptive_v2.py` | Dynamic asset switching | $1 | Moderate |
+| **v5** | `bot_aggressive_v3.py` | **Aggressive Martingale** | $100-$3200 | **HIGH** |
+
+## ⚠️ IMPORTANT WARNING
+
+**The aggressive bot (v5) uses a Martingale loss recovery system with trades up to $3,200!**
+
+- This is HIGH RISK trading
+- Only use on PRACTICE/DEMO accounts
+- The bot can hit recovery pause after 5 consecutive losses
+- Current status shows it hit the pause limit
+
 ## Features
 
 - Real-time market data streaming via WebSocket
 - Multi-timeframe analysis (1M, 5M, 15M candles)
 - LLM-powered prediction and market analysis
 - Strategy learning from multiple sources
-- Technical analysis indicators (RSI, MACD, Bollinger Bands, etc.)
+- Technical analysis indicators (RSI, MACD, Bollinger Bands, Stochastic, etc.)
+- **Session-aware trading** (Asian/London/New York)
+- **Martingale loss recovery system** (aggressive version)
 - Risk management and position sizing
 - Automated trading execution
 - Trade history and performance tracking
+- **24/7 OTC asset support**
 
 ## Prerequisites
 
@@ -42,30 +64,35 @@ nano .env
 
 ## Usage
 
-### Basic Usage
+### Basic Usage (Conservative Bot)
 
 ```bash
+# Activate virtual environment first
+source venv/bin/activate
+
+# Run conservative LLM-powered bot
 python main.py
 ```
 
-### Trading on Specific Timeframes
+### 24/7 OTC Trading (Recommended)
 
 ```bash
-python main.py --timeframe 1M  # 1-minute candles
-python main.py --timeframe 5M  # 5-minute candles
-python main.py --timeframe 15M # 15-minute candles
+# Adaptive bot with session awareness
+python bot_adaptive_v2.py
 ```
 
-### Demo Mode (Paper Trading)
+### Aggressive Trading (HIGH RISK - DEMO ONLY!)
 
 ```bash
-python main.py --demo
+# ⚠️ WARNING: Uses Martingale up to $3,200 per trade!
+python bot_aggressive_v3.py
 ```
 
-### Real Trading
+### Run with PM2 (Production)
 
 ```bash
-python main.py --real
+pm2 start ecosystem.config.js
+pm2 logs iqoption-aggressive-bot
 ```
 
 ## Architecture
@@ -90,11 +117,22 @@ Market Data → Technical Analyzer → LLM Analyst → Strategy Engine → Risk 
 
 The bot supports multiple strategies:
 
-1. **RSI Strategy**: Based on Relative Strength Index
-2. **MACD Strategy**: Based on Moving Average Convergence Divergence
-3. **Bollinger Bands Strategy**: Based on Bollinger Bands
-4. **LLM-Powered Strategy**: Uses LLM for market analysis
-5. **Hybrid Strategy**: Combines multiple strategies
+### Technical Analysis Strategies
+1. **RSI Reversal**: Oversold (<30) = CALL, Overbought (>70) = PUT
+2. **Stochastic Oscillator**: K/D crossovers in extreme zones
+3. **Bollinger Bands Breakout**: Price near bands = reversal
+4. **MACD Crossover**: Momentum-based signals
+5. **Support/Resistance Bounce**: Price at key levels
+
+### Advanced Strategies (v5)
+6. **Candlestick Patterns**: Hammer, Engulfing, Doji detection
+7. **Momentum Reversal**: Counter-trend trading
+8. **Session-Aware**: Different strategies per market session
+
+### Loss Recovery (Aggressive v5)
+- **Martingale System**: 2x multiplier after losses
+- **Max 5 levels**: $100 → $200 → $400 → $800 → $1600 → $3200
+- **Auto-pause**: Stops after 5 consecutive losses
 
 ## Risk Management
 
