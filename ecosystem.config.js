@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "iqoption-aggressive-bot",
-      script: "bot_aggressive_v3.py",
+      name: "iqoption-intelligent-bot",
+      script: "bot_intelligent_v4.py",
       interpreter: "/home/openclaw/.openclaw/workspace/iqoption-ai-trading-bot-new/venv/bin/python3",
       cwd: "/home/openclaw/.openclaw/workspace/iqoption-ai-trading-bot-new",
       env: {

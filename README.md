@@ -10,7 +10,8 @@ An intelligent trading bot for IQ Option platform with LLM-powered market analys
 | **v2** | `bot_24_7.py` | 24/7 OTC trading | $1 | Moderate |
 | **v3** | `bot_adaptive.py` | Adaptive with session awareness | $1 | Moderate |
 | **v4** | `bot_adaptive_v2.py` | Dynamic asset switching | $1 | Moderate |
-| **v5** | `bot_aggressive_v3.py` | **Aggressive Martingale** | $100-$3200 | **HIGH** |
+| **v5** | `bot_aggressive_v3.py` | Aggressive Martingale | $100-$3200 | **HIGH** |
+| **v6** | `bot_intelligent_v4.py` | **INTELLIGENT RECOVERY** | $10-$66 | Smart |
 
 ## ⚠️ IMPORTANT WARNING
 
@@ -20,6 +21,8 @@ An intelligent trading bot for IQ Option platform with LLM-powered market analys
 - Only use on PRACTICE/DEMO accounts
 - The bot can hit recovery pause after 5 consecutive losses
 - Current status shows it hit the pause limit
+
+**NEW: v6 Intelligent Recovery Bot** is recommended - learns from mistakes, safer $10 base, adaptive strategy weights.
 
 ## Features
 
