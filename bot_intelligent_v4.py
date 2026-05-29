@@ -213,6 +213,8 @@ class SmartRecovery:
         self.consecutive_losses = 0
         self.total_recovered = 0.0
         self.recovery_active = False
+        self.pause_start_time = None
+        self.pause_duration_minutes = 5  # Reset after 5 minutes
     
     def get_trade_amount(self) -> float:
         """Calculate trade amount based on recovery level"""
@@ -241,7 +243,29 @@ class SmartRecovery:
     
     def should_pause(self) -> bool:
         """Check if we should pause (max losses reached)"""
-        return self.consecutive_losses >= self.max_levels
+        if self.consecutive_losses >= self.max_levels:
+            # Start tracking pause time
+            if self.pause_start_time is None:
+                self.pause_start_time = time.time()
+                logger.warning(f"⏸️ Recovery pause started - will reset in {self.pause_duration_minutes} minutes")
+            
+            # Check if pause duration exceeded
+            elapsed = time.time() - self.pause_start_time
+            if elapsed >= self.pause_duration_minutes * 60:
+                logger.info(f"🔄 Recovery pause timeout - resetting to base trade")
+                self.reset()
+                return False
+            
+            return True
+        return False
+    
+    def reset(self):
+        """Reset recovery state"""
+        self.current_level = 0
+        self.consecutive_losses = 0
+        self.recovery_active = False
+        self.pause_start_time = None
+        logger.info("✅ Recovery state reset - starting fresh")
     
     def get_status(self) -> dict:
         return {
@@ -526,19 +550,17 @@ class IntelligentIQOptionBot:
         """Connect to IQ Option"""
         try:
             self.api = IQ_Option(self.email, self.password)
-            self.api.change_balance('PRACTICE')
+            check, reason = self.api.connect()
             
-            max_retries = 3
-            for i in range(max_retries):
-                if self.api.check_connect():
-                    self.balance = self.api.get_balance()
-                    self.start_balance = self.balance
-                    logger.info(f"✅ Connected! Balance: ${self.balance:.2f}")
-                    return True
-                time.sleep(2)
-            
-            logger.error("❌ Failed to connect")
-            return False
+            if check:
+                self.api.change_balance('PRACTICE')
+                self.balance = self.api.get_balance()
+                self.start_balance = self.balance
+                logger.info(f"✅ Connected! Balance: ${self.balance:.2f}")
+                return True
+            else:
+                logger.error(f"❌ Connection failed: {reason}")
+                return False
         except Exception as e:
             logger.error(f"Connection error: {e}")
             return False
@@ -603,25 +625,36 @@ class IntelligentIQOptionBot:
     def place_trade(self, asset: str, direction: str, amount: float) -> Optional[int]:
         """Place a binary option trade"""
         try:
+            logger.info(f"🎯 Placing {direction} trade on {asset} for ${amount:.2f}")
             # Use 1-minute expiry for faster results
             result, trade_id = self.api.buy(amount, asset, direction, 1)
+            logger.info(f"📊 Trade result: {result}, trade_id: {trade_id}")
             if result:
+                logger.info(f"✅ Trade placed successfully: {trade_id}")
                 return trade_id
+            else:
+                logger.warning(f"⚠️ Trade rejected: result={result}")
         except Exception as e:
-            logger.error(f"Trade error: {e}")
+            logger.error(f"❌ Trade error: {e}")
         return None
     
     def check_trade_result(self, trade_id: int, timeout: int = 120) -> Optional[float]:
         """Wait for trade result"""
+        logger.info(f"⏳ Waiting for result of trade {trade_id}...")
         start = time.time()
+        check_count = 0
         while time.time() - start < timeout:
             try:
-                result = self.api.check_win_v4(trade_id)
+                check_count += 1
+                result = self.api.check_win_v3(trade_id)
+                logger.debug(f"Check #{check_count}: result={result}")
                 if result is not None:
+                    logger.info(f"🎯 Trade {trade_id} result: {result}")
                     return result
-            except:
-                pass
+            except Exception as e:
+                logger.warning(f"⚠️ Error checking trade result (attempt {check_count}): {e}")
             time.sleep(2)
+        logger.error(f"❌ Timeout waiting for trade {trade_id} result after {timeout}s")
         return None
     
     def run_trading_cycle(self):
