@@ -1,0 +1,162 @@
+{
+  "welcomeQuest": {
+    "name": "Welcome Quest",
+    "description": "Complete all steps to earn 100 tokens + exclusive NFT",
+    "enabled": true,
+    "timeLimit": "7d",
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Join Discord",
+        "type": "discord_join",
+        "reward": 20,
+        "verification": "auto"
+      },
+      {
+        "id": 2,
+        "name": "Join Telegram",
+        "type": "telegram_join",
+        "reward": 20,
+        "verification": "auto"
+      },
+      {
+        "id": 3,
+        "name": "Follow Twitter",
+        "type": "twitter_follow",
+        "reward": 20,
+        "verification": "manual"
+      },
+      {
+        "id": 4,
+        "name": "Retweet Launch Post",
+        "type": "twitter_retweet",
+        "reward": 40,
+        "verification": "manual",
+        "prerequisite": 3
+      }
+    ],
+    "totalReward": 100,
+    "bonusReward": {
+      "nft": "welcome_badge",
+      "tokens": 50
+    }
+  },
+  "tradingQuest": {
+    "name": "Trading Master",
+    "description": "Become a trading expert and earn rewards",
+    "enabled": true,
+    "timeLimit": "30d",
+    "prerequisites": ["welcomeQuest"],
+    "tasks": [
+      {
+        "id": 1,
+        "name": "First Swap",
+        "type": "swap",
+        "amount": 10,
+        "reward": 50,
+        "verification": "auto"
+      },
+      {
+        "id": 2,
+        "name": "Medium Swap",
+        "type": "swap",
+        "amount": 100,
+        "reward": 150,
+        "verification": "auto",
+        "prerequisite": 1
+      },
+      {
+        "id": 3,
+        "name": "Large Swap",
+        "type": "swap",
+        "amount": 1000,
+        "reward": 300,
+        "verification": "auto",
+        "prerequisite": 2
+      },
+      {
+        "id": 4,
+        "name": "Provide Liquidity",
+        "type": "provide_liquidity",
+        "amount": 500,
+        "reward": 500,
+        "verification": "auto"
+      },
+      {
+        "id": 5,
+        "name": "Hold Tokens",
+        "type": "hold",
+        "duration": "30d",
+        "reward": 200,
+        "verification": "auto"
+      }
+    ],
+    "totalReward": 1200
+  },
+  "communityQuest": {
+    "name": "Community Champion",
+    "description": "Help grow the community and earn rewards",
+    "enabled": true,
+    "timeLimit": "90d",
+    "prerequisites": ["welcomeQuest"],
+    "tasks": [
+      {
+        "id": 1,
+        "name": "Invite 5 Friends",
+        "type": "referral",
+        "count": 5,
+        "reward": 100,
+        "verification": "auto"
+      },
+      {
+        "id": 2,
+        "name": "Invite 10 Friends",
+        "type": "referral",
+        "count": 10,
+        "reward": 250,
+        "verification": "auto",
+        "prerequisite": 1
+      },
+      {
+        "id": 3,
+        "name": "Create Content",
+        "type": "content_creation",
+        "reward": 200,
+        "verification": "manual"
+      },
+      {
+        "id": 4,
+        "name": "Help in Discord",
+        "type": "discord_helper",
+        "messages": 50,
+        "reward": 150,
+        "verification": "auto"
+      }
+    ],
+    "totalReward": 700
+  },
+  "leaderboard": {
+    "enabled": true,
+    "updateInterval": 300000,
+    "rewards": {
+      "daily": [100, 50, 25, 10, 5],
+      "weekly": [500, 300, 200, 100, 50],
+      "monthly": [2000, 1000, 500, 250, 100]
+    },
+    "resetInterval": "monthly",
+    "categories": ["total_points", "quests_completed", "referrals"]
+  },
+  "tracking": {
+    "webhook": null,
+    "discordAnnouncements": true,
+    "telegramNotifications": false,
+    "storeProgress": true,
+    "analyticsIntegration": true
+  },
+  "rewards": {
+    "distributionMethod": "instant",
+    "tokenAddress": "YOUR_TOKEN_ADDRESS",
+    "nftCollection": "YOUR_NFT_COLLECTION",
+    "minRewardThreshold": 10
+  }
+}

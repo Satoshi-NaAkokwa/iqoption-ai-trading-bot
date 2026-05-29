@@ -1,0 +1,108 @@
+{
+  "collection": {
+    "name": "Project Founders Club",
+    "symbol": "PFC",
+    "description": "Exclusive NFT collection for dedicated community members",
+    "totalSupply": 1000,
+    "price": 1.0,
+    "royalties": 5,
+    "creators": [
+      {
+        "address": "YOUR_WALLET_ADDRESS",
+        "share": 100
+      }
+    ]
+  },
+  "tiers": {
+    "bronze": {
+      "nfts": 500,
+      "price": 0.5,
+      "requiredTokens": 1000,
+      "benefits": [
+        "exclusive Discord role",
+        "early feature access",
+        "monthly newsletter",
+        "10% trading fee discount"
+      ],
+      "image": "bronze-nft.png"
+    },
+    "silver": {
+      "nfts": 350,
+      "price": 1.0,
+      "requiredTokens": 5000,
+      "benefits": [
+        "all bronze benefits",
+        "monthly token airdrop (100 tokens)",
+        "governance voting rights (1x)",
+        "20% trading fee discount",
+        "priority support"
+      ],
+      "image": "silver-nft.png"
+    },
+    "gold": {
+      "nfts": 150,
+      "price": 2.5,
+      "requiredTokens": 10000,
+      "benefits": [
+        "all silver benefits",
+        "quarterly token airdrop (500 tokens)",
+        "governance voting rights (3x)",
+        "50% trading fee discount",
+        "1-on-1 monthly call with team",
+        "early investment opportunities",
+        "founder access"
+      ],
+      "image": "gold-nft.png"
+    }
+  },
+  "gating": {
+    "discordChannels": {
+      "bronze": ["#bronze-lounge"],
+      "silver": ["#bronze-lounge", "#silver-lounge", "#trading-signals"],
+      "gold": ["#bronze-lounge", "#silver-lounge", "#gold-lounge", "#trading-signals", "#alpha"]
+    },
+    "features": {
+      "bronze": ["basic_analytics"],
+      "silver": ["basic_analytics", "advanced_analytics", "api_access"],
+      "gold": ["basic_analytics", "advanced_analytics", "api_access", "custom_strategies", "private_consultation"]
+    },
+    "events": {
+      "bronze": ["monthly_ama"],
+      "silver": ["monthly_ama", "quarterly_workshop"],
+      "gold": ["monthly_ama", "quarterly_workshop", "annual_summit", "private_events"]
+    }
+  },
+  "minting": {
+    "startDate": "2026-06-01T00:00:00Z",
+    "duration": "30d",
+    "presale": {
+      "enabled": true,
+      "duration": "48h",
+      "discount": 20,
+      "allowlist": []
+    },
+    "limits": {
+      "bronze": 5,
+      "silver": 3,
+      "gold": 1
+    }
+  },
+  "utility": {
+    "staking": {
+      "enabled": true,
+      "reward": 10,
+      "lockPeriod": "30d"
+    },
+    "breeding": {
+      "enabled": false
+    },
+    "gaming": {
+      "enabled": false
+    }
+  },
+  "secondary": {
+    "marketplaces": ["Magic Eden", "Tensor", "Blur"],
+    "enforceRoyalties": true,
+    "minPrice": 0.1
+  }
+}

@@ -1,0 +1,215 @@
+version: '3.8'
+
+services:
+  # Redis for caching and rate limiting
+  redis:
+    image: redis:7-alpine
+    container_name: solana-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # PostgreSQL for persistent data storage
+  postgres:
+    image: postgres:15-alpine
+    container_name: solana-postgres
+    environment:
+      POSTGRES_USER: solana_marketing
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+      POSTGRES_DB: solana_marketing
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Airdrop Agent
+  airdrop-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-airdrop-agent
+    command: node scripts/agent-airdrop.js
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - SOLANA_WALLET_PRIVATE_KEY=${SOLANA_WALLET_PRIVATE_KEY}
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://solana_marketing:${DB_PASSWORD:-changeme}@postgres:5432/solana_marketing
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Community Agent
+  community-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-community-agent
+    command: node scripts/agent-community.js
+    environment:
+      - NODE_ENV=production
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - TWITTER_API_KEY=${TWITTER_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Analytics Agent (with dashboard)
+  analytics-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-analytics-agent
+    command: node scripts/agent-analytics.js server --port 3000
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://solana_marketing:${DB_PASSWORD:-changeme}@postgres:5432/solana_marketing
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Influencer Agent
+  influencer-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-influencer-agent
+    command: node scripts/agent-influencer.js
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://solana_marketing:${DB_PASSWORD:-changeme}@postgres:5432/solana_marketing
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # NFT Agent
+  nft-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-nft-agent
+    command: node scripts/agent-nft.js
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - SOLANA_WALLET_PRIVATE_KEY=${SOLANA_WALLET_PRIVATE_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Quest Agent
+  quest-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-quest-agent
+    command: node scripts/agent-quest.js
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgresql://solana_marketing:${DB_PASSWORD:-changeme}@postgres:5432/solana_marketing
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Content Agent
+  content-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solana-content-agent
+    command: node scripts/agent-content.js
+    environment:
+      - NODE_ENV=production
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+  # Nginx Reverse Proxy (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: solana-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - analytics-agent
+    restart: unless-stopped
+    networks:
+      - solana-network
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  solana-network:
+    driver: bridge

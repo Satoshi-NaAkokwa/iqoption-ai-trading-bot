@@ -1,0 +1,35 @@
+{
+  "name": "kucoin-ai-trading-bot",
+  "version": "1.0.0",
+  "description": "Intelligent autonomous KuCoin trading bot with local LLM integration",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node src/test/test.js",
+    "backtest": "node src/backtest.js",
+    "monitor": "node src/monitors/24-7-monitor.js"
+  },
+  "keywords": [
+    "kucoin",
+    "trading",
+    "bot",
+    "ai",
+    "llm",
+    "cryptocurrency",
+    "automated-trading"
+  ],
+  "author": "Agbara-Okenze",
+  "license": "MIT",
+  "dependencies": {
+    "kucoin-api": "^1.1.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "node-cron": "^3.0.2",
+    "technicalindicators": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

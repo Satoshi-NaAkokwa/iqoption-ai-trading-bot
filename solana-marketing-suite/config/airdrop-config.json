@@ -1,0 +1,49 @@
+{
+  "targetWallets": {
+    "whales": {
+      "minBalance": 10000,
+      "maxBalance": null,
+      "reward": 500,
+      "criteria": {
+        "transactionCount": 100,
+        "timeframe": "30d",
+        "deFiActivity": true
+      }
+    },
+    "active": {
+      "minBalance": 100,
+      "maxBalance": 10000,
+      "reward": 50,
+      "criteria": {
+        "transactionCount": 10,
+        "timeframe": "30d"
+      }
+    },
+    "casual": {
+      "minBalance": 10,
+      "maxBalance": 100,
+      "reward": 5,
+      "criteria": {
+        "transactionCount": 1,
+        "timeframe": "90d"
+      }
+    }
+  },
+  "airdropAmount": 10000,
+  "batchSize": 100,
+  "delayBetweenBatches": 5000,
+  "gasReserve": 0.1,
+  "claimMethod": "auto-drop",
+  "expiry": "30d",
+  "antiBot": {
+    "captcha": true,
+    "walletAge": "7d",
+    "maxClaimsPerIP": 1,
+    "suspiciousActivityDetection": true
+  },
+  "tracking": {
+    "webhook": null,
+    "discordAnnouncements": true,
+    "telegramNotifications": true
+  }
+}

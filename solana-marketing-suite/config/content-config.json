@@ -1,0 +1,176 @@
+{
+  "generation": {
+    "blogPosts": {
+      "enabled": true,
+      "frequency": "weekly",
+      "wordCount": 1500,
+      "topics": [
+        "tokenomics",
+        "roadmap_updates",
+        "market_analysis",
+        "user_tutorials",
+        "community_spotlight",
+        "partnership_announcements"
+      ],
+      "style": "professional",
+      "includeImages": true
+    },
+    "twitterThreads": {
+      "enabled": true,
+      "frequency": "daily",
+      "tweetCount": 8,
+      "maxTweetsPerDay": 3,
+      "types": [
+        "market_update",
+        "educational",
+        "community_spotlight",
+        "project_update"
+      ],
+      "includeCharts": true
+    },
+    "youtubeScripts": {
+      "enabled": true,
+      "frequency": "biweekly",
+      "duration": "10m",
+      "types": [
+        "tutorial",
+        "market_analysis",
+        "project_overview",
+        "ama_recap"
+      ]
+    },
+    "instagram": {
+      "enabled": true,
+      "frequency": "daily",
+      "types": [
+        "infographic",
+        "quote",
+        "announcement",
+        "community_highlight"
+      ]
+    },
+    "telegram": {
+      "enabled": true,
+      "frequency": "hourly",
+      "types": [
+        "price_update",
+        "news",
+        "community_update",
+        "quick_tip"
+      ]
+    }
+  },
+  "contentCalendar": {
+    "monday": {
+      "blog": {
+        "topic": "Technical Deep Dive",
+        "publishTime": "10:00 UTC"
+      }
+    },
+    "tuesday": {
+      "twitter": {
+        "type": "thread",
+        "topic": "Market Analysis",
+        "publishTime": "14:00 UTC"
+      }
+    },
+    "wednesday": {
+      "video": {
+        "type": "tutorial",
+        "publishTime": "16:00 UTC"
+      }
+    },
+    "thursday": {
+      "blog": {
+        "topic": "Community Spotlight",
+        "publishTime": "10:00 UTC"
+      }
+    },
+    "friday": {
+      "twitter": {
+        "type": "ama_summary",
+        "publishTime": "12:00 UTC"
+      }
+    },
+    "saturday": {
+      "instagram": {
+        "type": "infographic",
+        "publishTime": "18:00 UTC"
+      }
+    },
+    "sunday": {
+      "newsletter": {
+        "type": "weekly_roundup",
+        "publishTime": "10:00 UTC"
+      }
+    }
+  },
+  "seo": {
+    "keywords": [
+      "Solana",
+      "DeFi",
+      "blockchain",
+      "cryptocurrency",
+      "token economics",
+      "Web3",
+      "crypto trading",
+      "liquidity mining"
+    ],
+    "optimizeFor": "google",
+    "metaDescriptions": true,
+    "internalLinks": true,
+    "externalLinks": true
+  },
+  "distribution": {
+    "crossPost": {
+      "twitter_to_telegram": true,
+      "blog_to_medium": true,
+      "blog_to_mirror": true
+    },
+    "scheduling": {
+      "timezone": "UTC",
+      "peakTimes": ["09:00", "12:00", "18:00", "21:00"]
+    }
+  },
+  "templates": {
+    "blogPost": {
+      "structure": [
+        "hook",
+        "introduction",
+        "problem_statement",
+        "solution",
+        "benefits",
+        "use_cases",
+        "roadmap",
+        "call_to_action"
+      ]
+    },
+    "twitterThread": {
+      "hookTypes": ["question", "statistic", "story", "controversial_statement"],
+      "ctaVariations": ["check it out", "learn more", "join the community", "read full article"]
+    },
+    "youtubeScript": {
+      "sections": ["intro", "hook", "main_content", "demo", "benefits", "call_to_action", "outro"]
+    }
+  },
+  "ai": {
+    "provider": "openai",
+    "model": "gpt-4",
+    "temperature": 0.7,
+    "maxTokens": 2000,
+    "fallbackProvider": "anthropic"
+  },
+  "quality": {
+    "minWordCount": 300,
+    "maxWordCount": 3000,
+    "plagiarismCheck": true,
+    "grammarCheck": true,
+    "factCheck": true
+  },
+  "storage": {
+    "saveDrafts": true,
+    "publishAutomatically": false,
+    "requireApproval": true,
+    "versionControl": true
+  }
+}

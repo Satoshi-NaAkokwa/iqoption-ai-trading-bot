@@ -1,0 +1,72 @@
+{
+  "budget": {
+    "total": 10000,
+    "perCampaign": 1000,
+    "minROI": 2.0,
+    "performanceBonus": 0.2
+  },
+  "criteria": {
+    "minFollowers": 10000,
+    "minEngagement": 3.0,
+    "categories": ["defi", "nft", "trading", "gaming"],
+    "platforms": ["twitter", "youtube", "discord", "telegram"],
+    "audienceQuality": {
+      "minRealFollowers": 70,
+      "maxBotPercentage": 30
+    }
+  },
+  "dealTemplates": {
+    "sponsoredTweet": {
+      "basePrice": 500,
+      "pricePer1kFollowers": 10,
+      "deliverables": ["1 tweet", "1 retweet", "24h pin"],
+      "performanceBonus": {
+        "impressions": 0.001,
+        "engagement": 0.01,
+        "conversions": 5
+      }
+    },
+    "discordShill": {
+      "basePrice": 300,
+      "pricePer1kMembers": 5,
+      "deliverables": ["announcement post", "community Q&A"],
+      "duration": "24h"
+    },
+    "youtubeReview": {
+      "basePrice": 1000,
+      "pricePer10kViews": 20,
+      "deliverables": ["5-10 min review", "description link", "pinned comment"],
+      "bonusPerView": 0.05
+    },
+    "telegramPromotion": {
+      "basePrice": 200,
+      "pricePer1kMembers": 3,
+      "deliverables": ["channel post", "24h pin"],
+      "maxChannels": 5
+    }
+  },
+  "tracking": {
+    "metrics": ["impressions", "clicks", "conversions", "newHolders"],
+    "attributionWindow": "7d",
+    "roiCalculation": true,
+    "dailyUpdates": true
+  },
+  "paymentMethods": {
+    "primary": "USDT",
+    "alternatives": ["USDC", "SOL"],
+    "escrow": true,
+    "milestoneRelease": true
+  },
+  "vetting": {
+    "autoVet": true,
+    "manualReview": false,
+    "checkAudience": true,
+    "verifyEngagement": true,
+    "historicalPerformance": true
+  },
+  "blacklist": {
+    "enabled": true,
+    "reasons": ["scam_history", "fake_followers", "negative_sentiment"],
+    "autoReject": true
+  }
+}

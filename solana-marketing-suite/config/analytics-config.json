@@ -1,0 +1,75 @@
+{
+  "tracking": {
+    "walletConnections": true,
+    "tokenTransfers": true,
+    "socialEngagement": true,
+    "websiteTraffic": true,
+    "discordActivity": true,
+    "telegramActivity": true,
+    "twitterMentions": true
+  },
+  "metrics": [
+    "dailyActiveUsers",
+    "tokenHolderCount",
+    "transferVolume",
+    "socialEngagement",
+    "communityGrowth",
+    "conversionRate",
+    "retentionRate"
+  ],
+  "reporting": {
+    "daily": {
+      "enabled": true,
+      "time": "09:00 UTC",
+      "channels": ["discord", "telegram"]
+    },
+    "weekly": {
+      "enabled": true,
+      "day": "monday",
+      "time": "09:00 UTC",
+      "channels": ["discord", "telegram", "email"]
+    },
+    "monthly": {
+      "enabled": true,
+      "day": 1,
+      "time": "09:00 UTC",
+      "channels": ["email"]
+    }
+  },
+  "retentionDays": 90,
+  "sampleRate": 1.0,
+  "dashboards": {
+    "executive": {
+      "metrics": ["ROI", "CAC", "LTV", "conversion_rate"],
+      "updateFrequency": "daily"
+    },
+    "marketing": {
+      "metrics": "all",
+      "updateFrequency": "hourly",
+      "breakdown": "by_channel"
+    },
+    "community": {
+      "metrics": ["members", "active_users", "engagement_rate"],
+      "updateFrequency": "realtime"
+    }
+  },
+  "alerts": {
+    "anomalyDetection": true,
+    "thresholds": {
+      "dailyVolumeDrop": 20,
+      "communityGrowthStall": 3,
+      "conversionRateDrop": 0.5,
+      "unusualActivity": true
+    },
+    "notifications": {
+      "discord": true,
+      "telegram": true,
+      "email": false
+    }
+  },
+  "attribution": {
+    "model": "multi_touch",
+    "lookback": "30d",
+    "credit": "equal_distribution"
+  }
+}

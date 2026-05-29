@@ -1,0 +1,231 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-29T04:57:19.238Z",
+  "entries": {
+    "memory:memory/2026-05-24.md:1:44": {
+      "key": "memory:memory/2026-05-24.md:1:44",
+      "path": "memory/2026-05-24.md",
+      "startLine": 1,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "# Memory Log - 2026-05-24 ## IQ Option Bot Analysis - 16:51 UTC (Memory Flush) ### CURRENT STATUS: BOT IS TRADING ✅ **User Question**: \"Find the reason why IQ Option is not trading\" **Answer**: The bot IS trading actively! Analysis shows: ### Latest Stats (17:13 GMT+8): - **Balance**: $9,987.60 (Started: $10,008.55) - **Trades**: 60 total - **Win Rate**: 56.7% (34 wins, 26 losses) - **P&L**: -$5.10 (negative due to 85% payout ratio on wins) - **Mode**: OTC 24/7 (6 assets available) - **Hourly Limit**: 10/10 trades ### Bot IS Working: 1. ✅ Connected to IQ Option API successfully 2. ✅ 6 OTC assets available (EURUSD-OTC, GBPUSD-OTC, EURJPY-OTC, EURGBP-OTC, GBPJPY-OTC, USDCHF-OTC) 3. ✅ Gen",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.6352013244526566,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-24T23:25:26.898Z",
+      "lastRecalledAt": "2026-05-29T04:57:19.238Z",
+      "queryHashes": [
+        "b2b9d1e2c274",
+        "883f60a87e59",
+        "846703e5c0b9"
+      ],
+      "recallDays": [
+        "2026-05-25",
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "987.60",
+        "008.55",
+        "56.7",
+        "5.10",
+        "24/7",
+        "10/10",
+        "eurusd-otc",
+        "gbpusd-otc"
+      ]
+    },
+    "memory:memory/2026-05-25.md:76:92": {
+      "key": "memory:memory/2026-05-25.md:76:92",
+      "path": "memory/2026-05-25.md",
+      "startLine": 76,
+      "endLine": 92,
+      "source": "memory",
+      "snippet": "- $100 daily profit target - $200 daily loss limit ### 🚀 Bot Status - **New Bot**: `bot_intelligent_v4.py` - **Memory File**: `trading_memory.json` (auto-created) - **GitHub**: Updated with new bot ### 💡 Key Learnings for Future 1. Always track win rate per asset/direction 2. Martingale multiplier should be 1.5-1.6x max 3. Require multiple indicators to agree 4. Binary options need 59%+ win rate for profit 5. Session matters - Asian session better for JPY pairs",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6334501792016153,
+      "maxScore": 0.6334501792016153,
+      "firstRecalledAt": "2026-05-28T12:38:28.196Z",
+      "lastRecalledAt": "2026-05-28T12:38:28.196Z",
+      "queryHashes": [
+        "883f60a87e59"
+      ],
+      "recallDays": [
+        "2026-05-28"
+      ],
+      "conceptTags": [
+        "bot-intelligent-v4.py",
+        "trading-memory.json",
+        "auto-created",
+        "asset/direction",
+        "1.5-1.6x",
+        "profit",
+        "target",
+        "loss"
+      ]
+    },
+    "memory:memory/2026-05-26.md:64:103": {
+      "key": "memory:memory/2026-05-26.md:64:103",
+      "path": "memory/2026-05-26.md",
+      "startLine": 64,
+      "endLine": 103,
+      "source": "memory",
+      "snippet": "| EURJPY-OTC | PUT | 90% (9-1) | +$94.78 | | EURUSD-OTC | PUT | 57.5% (73-54) | +$689.48 | | EURUSD-OTC | CALL | 43.6% (51-66) | +$475.89 | | GBPUSD-OTC | PUT | 45.8% (38-45) | +$369.99 | | GBPUSD-OTC | CALL | 47.4% (36-40) | +$365.69 | #### Best Strategies by PnL: | Strategy | Wins | Losses | Total PnL | |----------|------|--------|-----------| | macd_bearish | 63 | 45 | +$568.53 | | macd_bullish | 37 | 43 | +$347.51 | | stoch_oversold | 15 | 19 | +$154.63 | | bb_upper_bounce | 12 | 10 | +$133.44 | | explore_rsi_extreme | 13 | 8 | +$114.55 | #### Session Performance: | Session | Wins | Losses | Win Rate | |---------|------|--------|----------| | Tokyo | 112 | 93 | 54.6% ✅ | | Tokyo-London",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.2633076582544371,
+      "maxScore": 0.6316538291272186,
+      "firstRecalledAt": "2026-05-28T12:38:28.196Z",
+      "lastRecalledAt": "2026-05-29T04:56:38.166Z",
+      "queryHashes": [
+        "883f60a87e59",
+        "78e2f6b2a25c"
+      ],
+      "recallDays": [
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "eurjpy-otc",
+        "9-1",
+        "94.78",
+        "eurusd-otc",
+        "57.5",
+        "73-54",
+        "689.48",
+        "43.6"
+      ]
+    },
+    "memory:memory/2026-05-26.md:1:36": {
+      "key": "memory:memory/2026-05-26.md:1:36",
+      "path": "memory/2026-05-26.md",
+      "startLine": 1,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "# Memory Log - 2026-05-26 ## IQ Option 24/7 Learning Bot Deployed ### Bot Details - **File**: `/home/openclaw/.openclaw/workspace/iqoption-ai-trading-bot-new/bot_247_learning_v5.py` - **PM2 Process**: `iqoption-247-learning` - **Mode**: 24/7 learning (no session restrictions, no daily profit target) - **Balance**: $7,099.34 (PRACTICE mode) - **Trade Size**: $10.00 base ### Key Configuration Decisions - Set daily profit target to $10,000 (effectively unlimited) - No session-based trading restrictions - Uses MACD-based strategy (macd_bullish for CALL, macd_bearish for PUT) - Memory file: `trading_memory_v5.json` (bot saves periodically) ### Early Performance (Tokyo Session 08:05-08:13 GMT+",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.2631531547592385,
+      "maxScore": 0.6315766721382365,
+      "firstRecalledAt": "2026-05-28T12:38:28.196Z",
+      "lastRecalledAt": "2026-05-29T04:56:38.166Z",
+      "queryHashes": [
+        "883f60a87e59",
+        "78e2f6b2a25c"
+      ],
+      "recallDays": [
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "24/7",
+        "home/openclaw",
+        "iqoption-247-learning",
+        "099.34",
+        "10.00",
+        "session-based",
+        "macd-based",
+        "macd-bullish"
+      ]
+    },
+    "memory:memory/2026-05-24.md:34:67": {
+      "key": "memory:memory/2026-05-24.md:34:67",
+      "path": "memory/2026-05-24.md",
+      "startLine": 34,
+      "endLine": 67,
+      "source": "memory",
+      "snippet": "- Currently profitable on win rate but losing on P&L due to payout structure 3. **Signal generation gaps**: - Many \"No signal\" entries (confidence: 0%) - Strategy thresholds may be too conservative ### Bot Configuration: - Demo mode: $10,000 practice account - Trade size: $1.00 per trade - Signal confidence threshold: 60%+ - Strategies: RSI, MACD, Bollinger Bands, Price Action - RSI overbought: 70, oversold: 30 ### Recommendations for 24/7 Dynamic Trading: 1. **Lower signal threshold** to 55% to get more trades 2. **Adjust position sizing** based on win streaks (Martingale) 3. **Add time-based strategy adaptation**: - Asian session: Focus on JPY pairs - London session: Focu",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6315641132452607,
+      "maxScore": 0.6315641132452607,
+      "firstRecalledAt": "2026-05-29T04:56:38.166Z",
+      "lastRecalledAt": "2026-05-29T04:56:38.166Z",
+      "queryHashes": [
+        "78e2f6b2a25c"
+      ],
+      "recallDays": [
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "1.00",
+        "24/7",
+        "time-based",
+        "currently",
+        "profitable",
+        "win",
+        "rate",
+        "but"
+      ]
+    },
+    "memory:memory/2026-05-25.md:33:88": {
+      "key": "memory:memory/2026-05-25.md:33:88",
+      "path": "memory/2026-05-25.md",
+      "startLine": 33,
+      "endLine": 88,
+      "source": "memory",
+      "snippet": "- **Problem**: Traded same assets regardless of session - **Fix**: v4 prioritizes best-performing assets based on memory ### 📊 Historical Performance Data ``` Total Trades: 152 (75 wins, 77 losses) Overall Win Rate: 49.3% (NEEDS 59%+ for profit) Account Balance: $7,168 (started ~$10,000) ``` #### Worst Performing (AVOID): - PUT EURGBP-OTC: 13 losses - CALL EURUSD-OTC: 12 losses - CALL USDCHF-OTC: 9 losses #### Best Performing (PRIORITIZE): - CALL GBPJPY-OTC: 9 wins - PUT GBPUSD-OTC: 9 wins - PUT EURJPY-OTC: 8 wins ### ✅ NEW BOT v4 - Intelligent Recovery Features 1. **TradingMemory Class** - Tracks win rate per asset + direction - Tracks strategy performance - Tracks session",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6314506280214282,
+      "maxScore": 0.6314506280214282,
+      "firstRecalledAt": "2026-05-29T04:56:38.166Z",
+      "lastRecalledAt": "2026-05-29T04:56:38.166Z",
+      "queryHashes": [
+        "78e2f6b2a25c"
+      ],
+      "recallDays": [
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "best-performing",
+        "49.3",
+        "eurgbp-otc",
+        "eurusd-otc",
+        "usdchf-otc",
+        "gbpjpy-otc",
+        "gbpusd-otc",
+        "eurjpy-otc"
+      ]
+    },
+    "memory:memory/2026-05-25.md:1:45": {
+      "key": "memory:memory/2026-05-25.md:1:45",
+      "path": "memory/2026-05-25.md",
+      "startLine": 1,
+      "endLine": 45,
+      "source": "memory",
+      "snippet": "# Memory Log - 2026-05-25 ## IQ Option Bot Analysis & Recovery - 09:15 GMT+8 ### 🔍 WHAT WENT WRONG - Root Cause Analysis #### 1. Martingale System Too Aggressive - **Problem**: Bot used 2x multiplier, hitting $3,200 trades - **Result**: 5 consecutive losses = recovery pause, account drained - **Fix**: Reduced multiplier to 1.6x in new v4 bot #### 2. No Learning from Past Trades - **Problem**: Bot didn't track which assets/strategies worked - **Data showed**: - PUT EURGBP-OTC: 13 losses (worst performer) - CALL EURUSD-OTC: 12 losses - CALL USDCHF-OTC: 9 losses - **Fix**: v4 bot has TradingMemory class that tracks win rates per asset/direction #### 3. Poor Strategy Selection - **An",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-29T04:57:19.238Z",
+      "lastRecalledAt": "2026-05-29T04:57:19.238Z",
+      "queryHashes": [
+        "846703e5c0b9"
+      ],
+      "recallDays": [
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "1.6x",
+        "assets/strategies",
+        "eurgbp-otc",
+        "eurusd-otc",
+        "usdchf-otc",
+        "asset/direction",
+        "log",
+        "option"
+      ]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "posting": {
+    "twitter": {
+      "enabled": true,
+      "interval": 3600000,
+      "maxPostsPerDay": 4,
+      "bestTimes": ["09:00", "12:00", "18:00", "21:00"]
+    },
+    "discord": {
+      "enabled": true,
+      "interval": 1800000,
+      "channels": ["#announcements", "#general"],
+      "dailyDigest": true,
+      "digestTime": "09:00 UTC"
+    },
+    "telegram": {
+      "enabled": true,
+      "interval": 3600000,
+      "channels": [],
+      "maxPostsPerDay": 6
+    }
+  },
+  "hashtags": ["#Solana", "#DeFi", "#Crypto", "#Airdrop", "#Web3"],
+  "autoEngage": true,
+  "sentimentThreshold": 0.6,
+  "moderation": {
+    "enabled": true,
+    "spamFilter": true,
+    "linkFilter": [],
+    "maxWarnings": 3,
+    "autoMute": true,
+    "muteDuration": 3600000
+  },
+  "welcomeMessage": {
+    "enabled": true,
+    "template": "Welcome {user}! 🎉 You're now part of the {project} community. Check out #start-here for rewards!",
+    "autoRole": "Member"
+  },
+  "priceAlerts": {
+    "enabled": true,
+    "threshold": 5,
+    "channels": ["#trading"],
+    "includeChart": true
+  },
+  "engagementRewards": {
+    "enabled": true,
+    "pointsPerMessage": 1,
+    "pointsPerReaction": 0.5,
+    "weeklyRewards": [500, 300, 200, 100, 50]
+  }
+}

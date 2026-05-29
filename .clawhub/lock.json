@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "skills": {
+    "kucoin-trader": {
+      "version": "1.0.1",
+      "installedAt": 1779037196608
+    },
+    "kucoin-openapi-skill": {
+      "version": "1.0.0",
+      "installedAt": 1779037216665
+    },
+    "nostr-social": {
+      "version": "1.1.8",
+      "installedAt": 1779037268948
+    },
+    "archon-nostr": {
+      "version": "0.1.0",
+      "installedAt": 1779037275339
+    },
+    "nostrwalletconnect": {
+      "version": "0.1.4",
+      "installedAt": 1779037328143
+    },
+    "nostrsocial": {
+      "version": "0.1.3",
+      "installedAt": 1779037344661
+    },
+    "postiz": {
+      "version": "1.0.15",
+      "installedAt": 1779037356049
+    },
+    "nak": {
+      "version": "0.1.0",
+      "installedAt": 1779037384410
+    },
+    "nihao": {
+      "version": "0.12.3",
+      "installedAt": 1779037389766
+    },
+    "parallel-ai-research": {
+      "version": "1.1.0",
+      "installedAt": 1779037635653
+    },
+    "solo-research": {
+      "version": "1.7.1",
+      "installedAt": 1779037646214
+    },
+    "in-depth-research": {
+      "version": "1.0.0",
+      "installedAt": 1779037666220
+    },
+    "lightning-agent-commerce": {
+      "version": "1.0.0",
+      "installedAt": 1779038030309
+    },
+    "lightning-security-module": {
+      "version": "1.0.0",
+      "installedAt": 1779038057350
+    },
+    "lnd-macaroon-bakery": {
+      "version": "1.0.0",
+      "installedAt": 1779038069162
+    },
+    "lnd": {
+      "version": "1.0.1",
+      "installedAt": 1779038082559
+    },
+    "hodlxxi-bitcoin-identity": {
+      "version": "0.1.2",
+      "installedAt": 1779038354143
+    },
+    "bitchat": {
+      "version": "0.1.2",
+      "installedAt": 1779038544979
+    },
+    "mt4-trader": {
+      "version": "1.2.1",
+      "installedAt": 1779038667814
+    },
+    "binance-spot-trader": {
+      "version": "1.0.0",
+      "installedAt": 1779038714438
+    },
+    "binance-hunter": {
+      "version": "1.0.0",
+      "installedAt": 1779038728836
+    },
+    "binance-trading-signal": {
+      "version": "1.0.0",
+      "installedAt": 1779038774118
+    },
+    "binance-pro-1-0-0": {
+      "version": "1.0.0",
+      "installedAt": 1779038790789
+    },
+    "binance-spot-openapi-skill": {
+      "version": "1.0.1",
+      "installedAt": 1779038806997
+    },
+    "nsfw-image": {
+      "version": "1.0.4",
+      "installedAt": 1779120958707
+    },
+    "expo-appstore-deploy": {
+      "version": "1.0.1",
+      "installedAt": 1779121400616
+    }
+  }
+}
