@@ -56,8 +56,8 @@ class SelfLearningConfig:
         self.memory_file = memory_file
         self.config = {
             # Base parameters
-            'min_confidence': 85,
-            'min_indicators': 5,
+            'min_confidence': 65,  # Lowered to allow signals through
+            'min_indicators': 3,   # Lowered from 5 - more realistic
             'base_amount': 10.0,
             
             # Hours to skip (learned from data)
@@ -198,7 +198,7 @@ class SelfLearningConfig:
         """Get adaptive minimum confidence"""
         base = self.config['min_confidence']
         adj = self.config['confidence_adjustment']
-        return max(80, min(95, base + adj))
+        return max(55, min(95, base + adj))  # Allow as low as 55%
 
 
 class TelegramReporter:
@@ -462,6 +462,9 @@ class V8Strategy:
             return None
 
         main_trend = trend_5m if trend_5m != "ranging" else trend_1m
+        
+        # Debug log
+        logger.info(f"📈 {trend_5m}/{trend_1m} trend for analysis")
 
         # Indicator analysis
         indicators = {}
@@ -544,28 +547,38 @@ class V8Strategy:
         # Signal resolution
         max_signals = max(call_signals, put_signals)
         
+        logger.info(f"📊 Indicators: CALL={call_signals}, PUT={put_signals}, max={max_signals}, min_required={min_indicators}")
+        
         if max_signals < min_indicators:
             return None
 
         if call_signals > put_signals:
             direction = 'CALL'
             if 'downtrend' in main_trend:
+                logger.info(f"❌ CALL blocked by {main_trend}")
                 return None  # NO counter-trend
         elif put_signals > call_signals:
             direction = 'PUT'
             if 'uptrend' in main_trend:
+                logger.info(f"❌ PUT blocked by {main_trend}")
                 return None  # NO counter-trend
         else:
             return None
 
-        confidence = min(100, (max_signals / 7) * 100)
+        # Use accumulated confidence from indicators (more accurate)
+        # Base confidence from signal count + bonus from indicator strength
+        base_confidence = (max_signals / 7) * 100
+        bonus_confidence = confidence * 0.3  # 30% weight on indicator strength
+        final_confidence = min(100, base_confidence + bonus_confidence)
 
-        if confidence < min_confidence:
+        logger.info(f"📊 Confidence: base={base_confidence:.1f}%, bonus={bonus_confidence:.1f}%, final={final_confidence:.1f}%, min={min_confidence}%")
+
+        if final_confidence < min_confidence:
             return None
 
         return {
             'direction': direction,
-            'confidence': confidence,
+            'confidence': final_confidence,
             'indicators': indicators,
             'trend_aligned': True
         }
@@ -831,12 +844,19 @@ class V8Bot:
                         candles_5m = self.get_candles(asset, 300, 50)
 
                         if len(candles_1m) < 50 or len(candles_5m) < 20:
+                            logger.info(f"⚠️ Insufficient candles for {asset}: 1m={len(candles_1m)}, 5m={len(candles_5m)}")
                             continue
 
                         signal = self.strategy.generate_signal(candles_1m, candles_5m)
 
-                        if signal and signal['confidence'] >= self.learning.get_min_confidence():
-                            trade_id = self.execute_trade(signal, asset)
+                        if signal:
+                            logger.info(f"📊 Signal: {signal['direction']} {asset} @ {signal['confidence']:.0f}% (min: {self.learning.get_min_confidence()}%)")
+                            if signal['confidence'] >= self.learning.get_min_confidence():
+                                trade_id = self.execute_trade(signal, asset)
+                            else:
+                                logger.info(f"⏭️ Signal below confidence threshold")
+                        # else:
+                        #     logger.debug(f"No signal for {asset}")
 
                             if trade_id:
                                 self.trades_this_hour += 1
